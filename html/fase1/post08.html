@@ -40,7 +40,7 @@
                 um pouco, encontrei o arquivo que queria editar: <code>drivers/iio/light/iqs621-als.c</code>. Escolhi esse porque
                 todos os que eu tinha achado até então eram ou muito triviais de alterar, ou possuiam algum caso em que seria muito complexo.
                 O <code>iqs621-als</code> era um bom meio termo: duas funções relativamente fáceis, e três que eu precisei pensar um pouco.
-                Em ambos os casos, porém, a ideia é a mesma: subustitui o <code>mutex_lock()</code> por <code>guard(mutex)()</code>, substituir
+                Em ambos os casos, porém, a ideia é a mesma: substitui o <code>mutex_lock()</code> por <code>guard(mutex)()</code>, substituir
                 os <code>goto</code> por <code>return</code> e garantir que o funcionamento da função não seja alterado. É importante notar
                 também que não queremos aumentar o tamanho da seção crítica (seção protegida pelo semáforo). No caso do iqs621-als, todos os
                 <code>mutex_unlock()</code> eram seguidos de <code>return</code>. Assim, não há muito que se preocupar.
@@ -51,17 +51,13 @@
             <h3>Enviando o Primeiro Patch</h3>
 
             <p>
-                Após enviar o patch para o CI e conferir que a pipeline de execução terminou de executar com sucesso, envieu o patch
+                Após enviar o patch para o CI e conferir que a pipeline de execução terminou de executar com sucesso, enviei o patch
                 para o subsistema IIO. Esse é o email do patch enviado<a href="https://lore.kernel.org/all/20260419213202.68356-1-pedro.pbg@usp.br/" target="_blank">&#128279;</a>.
                 Dentre tudo que fizemos até agora, criar o patch foi, de longe, a mais legal. Foi tão mais legal que eu até reconsiderei a
                 decisão que eu havia tomado algumas semanas antes de nunca mais mexer com o kernel linux. A única coisa que eu diria ser
                 um problema do processo do envio dos patchs é que, na hora de enviar de fato, vem um medo de enviar algo ruim.
             </p>
-
         </div>
-
     </div>
-
-    
 </body>
 </html>
