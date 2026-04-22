@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedro Barletta Gennari - 08</title>
+
+    <link href="../../css/styles.css" rel="stylesheet">
+</head>
+<body>
+
+    <div class="page">
+        <div id="cicle0" class="cicle">
+        
+            <small>08 &middot; 19/04/2026</small>
+            <h6>Desenvolvimento do Kernel Linux</h6>
+            
+            <br>
+            <h2>> Patch v1 <a href="https://flusp.ime.usp.br/courses/linux-kernel-patch-suggestions/" target="_blank">&#128279;</a></h2>
+            
+            <br>
+            <hr>
+            <br>
+            
+            <h3>Introdução</h3>
+            <p>
+                Finalmente chegou a hora de criar enviar os patchs. Após olhar as sugestões dos monitores, decidi
+                que iria fazer a 1.1: trocar chamadas de <code>mutex_lock(&lock)</code> e <code>mutex_unlock(&lock)</code>
+                por chamadas de <code>guard(mutex)(&lock)</code>. A ideia é que usar guard abre o semáforo automaticamente
+                quando o escopo em que ele é chamado acaba. Isso previne erros por esquecer de abrir o semáforo (especialmente
+                em retornos antecipados) e também evita a necessidade de usar <code>goto</code>, deixando o código mais fácil
+                de ler e mais seguro.
+            </p>
+            
+            <br>
+
+            <h3>Criando o Patch</h3>
+            <p>
+                Decidi, por simplicidade, que faria o patch no mesmo subsistema usado nos tutoriais, isto é, no IIO. Depois de procurar
+                um pouco, encontrei o arquivo que queria editar: <code>drivers/iio/light/iqs621-als.c</code>. Escolhi esse porque
+                todos os que eu tinha achado até então eram ou muito triviais de alterar, ou possuiam algum caso em que seria muito complexo.
+                O <code>iqs621-als</code> era um bom meio termo: duas funções relativamente fáceis, e três que eu precisei pensar um pouco.
+                Em ambos os casos, porém, a ideia é a mesma: subustitui o <code>mutex_lock()</code> por <code>guard(mutex)()</code>, substituir
+                os <code>goto</code> por <code>return</code> e garantir que o funcionamento da função não seja alterado. É importante notar
+                também que não queremos aumentar o tamanho da seção crítica (seção protegida pelo semáforo). No caso do iqs621-als, todos os
+                <code>mutex_unlock()</code> eram seguidos de <code>return</code>. Assim, não há muito que se preocupar.
+            </p>
+
+            <br>
+
+            <h3>Enviando o Primeiro Patch</h3>
+
+            <p>
+                Após enviar o patch para o CI e conferir que a pipeline de execução terminou de executar com sucesso, envieu o patch
+                para o subsistema IIO. Esse é o email do patch enviado<a href="https://lore.kernel.org/all/20260419213202.68356-1-pedro.pbg@usp.br/" target="_blank">&#128279;</a>.
+                Dentre tudo que fizemos até agora, criar o patch foi, de longe, a mais legal. Foi tão mais legal que eu até reconsiderei a
+                decisão que eu havia tomado algumas semanas antes de nunca mais mexer com o kernel linux. A única coisa que eu diria ser
+                um problema do processo do envio dos patchs é que, na hora de enviar de fato, vem um medo de enviar algo ruim.
+            </p>
+
+        </div>
+
+    </div>
+
+    
+</body>
+</html>
