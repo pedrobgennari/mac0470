@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedro Barletta Gennari - 0</title>
+
+    <link href="../../css/styles.css" rel="stylesheet">
+</head>
+<body>
+
+    <div class="page">
+        <div id="cicle0" class="cicle">
+        
+            <small>0 &middot; //2026</small>
+            <h6>Desenvolvimento do Kernel Linux</h6>
+            
+            <br>
+            <h2>> Drivers de Dispositivo de Caractere <a href="https://flusp.ime.usp.br/kernel/char-drivers-intro/" target="_blank">&#128279;</a></h2>
+            
+            <br>
+            <hr>
+            <br>
+            
+            <h3>Introdução</h3>
+            <p>
+                Esse tutorial apresenta os <i>character devices</i>. Esses são responsáveis por
+                interagir com componentes de software e hardware trocando dados de forma sequêncial.
+                Como a maior parte desse tutorial é teórica, e a parte prática é muito parecida com
+                o tutorial 3, não houve grandes dificuldades.
+            </p>
+
+            <br>
+
+            <h3>Operações de Arquivos</h3>
+            <p>
+                Dentre os conceitos relacionados aos dispositivo de caractere que
+                o tutorial explica, acredito que os mais importantes são as <span>operações
+                de arquivos</span>. Um dispositivo de caractere pode implementar várias dessas
+                operações, como open, close, read e write. É nessas quatro operações que
+                o tutorial foca.
+            </p>
+
+            <br>
+
+            <h3>Simple Char</h3>
+            <p>
+                Da mesma forma que simple_mod, criamos agora <code>simple_char.c</code>
+                em <code>drivers/char/</code>. Configuramos simple_char em <code>Kconfig</code>
+                e <code>Makefile</code>. A compilação e ativação também são feitas da mesma forma
+                que fizemos com os módulos no tutorial anterior. Por fim, para testar simple_char,
+                criamos <code>read_prog.c</code> e <code>write_prog.c</code>. Como o tutorial já
+                havia explicado tudo na seção anterior, não há o que dar errado aqui. Abrimos a VM,
+                rodamos, e vemos que foi possível ler e escrever para o simple_char.
+
+            </p>
+            
+
+        </div>
+
+    </div>
+
+    
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedro Barletta Gennari - 07</title>
+
+    <link href="../../css/styles.css" rel="stylesheet">
+</head>
+<body>
+
+    <div class="page">
+        <div id="cicle0" class="cicle">
+        
+            <small>07 &middot; 01/04/2026</small>
+            <h6>Desenvolvimento do Kernel Linux</h6>
+            
+            <br>
+            <h2>> Entendendo o IIO Dummy <a href="https://flusp.ime.usp.br/iio/iio-dummy-anatomy/" target="_blank">&#128279;</a>
+                                             <a href="https://flusp.ime.usp.br/iio/experiment-one-iio-dummy/" target="_blank">&#128279;</a></h2>
+            
+            <br>
+            <hr>
+            <br>
+            
+            <h3>Introdução</h3>
+            <p>
+                Agora, tentaremos explorar um pouco o driver <code>iio_simple_dummy</code> do
+                subsistema IIO. A ideia é tentar entender melhor a estrutura interna do IIO. Como
+                o módulo <code>iio_dummy</code> possui uma grande quantidade de comentários para
+                ajudar desenvolvedores, esse parece um bom local para começar. Esses dois tutorias,
+                que mergulham no <code>iio_dummy</code>, são os últimos dois tutoriais antes de
+                começarmos de verdade as contribuições. Por acaso, também foram os dois tutoriais mais chatos.
+            </p>
+
+            <br>
+
+            <h3>Anatomia do IIO Dummy</h3>
+            <p>
+                O primeiro tutorial foca em descrever a estrutura do <code>iio_simple_dummy</code>.
+                Passamos por diversos elementos desse modulo, como seus canais (representação de um dado),
+                funções de leitura e escrita, entre outros detalhes. Não há nada para de fato ser feito aqui,
+                mas apenas uma grande quantidade de informações bem específicas - e não muito interessantes.
+                Tive que ler esse tutorial algumas vezes, e nem posso dizer que eu entendo o <code>iio_dummy</code>
+                completamente.
+            </p>
+
+            <br>
+
+            <h3>Brincando com IIO Dummy</h3>
+            <p>
+                No segundo tutorial, tentados fazer algumas modificações ao <code>iio_dummy</code>.
+                Antes de mais nada, como qualquer módulo, precisamos habilitá-lo. Esse tutorial faz
+                esse processo com o <code>make</code>. Para manter a consistência com o que fizemos
+                anteriormente, reproduzi os passos com a ferramenta <code>kw</code> (como nos tutoriais
+                2 e 3). Não senti muita dificuldade em fazer isso e, após compilar e carregar o módulo,
+                <code>modinfo iio_dummy</code> mostrou que tudo ocorreu corretamente. A partir disso,
+                fazemos uma pequena modificação, adicionando três novos canais. Não houve mais nada
+                a partir daqui que realmente pudesse dar algum problema, e de fato não deu.
+            </p>
+
+        </div>
+
+    </div>
+
+    
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedro Barletta Gennari - 02</title>
+
+    <link href="../../css/styles.css" rel="stylesheet">
+</head>
+<body>
+
+    <div class="page">
+        <div class="cicle">
+        
+            <small>02 &middot; 04/03/2026</small>
+            <h6>Desenvolvimento do Kernel Linux</h6>
+            
+            <br>
+            <h2>> Compilando o Kernel Linux <a href="https://flusp.ime.usp.br/kernel/build-linux-for-arm-kw/" target="_blank">&#128279;</a></h2>
+    
+            
+            <br>
+            <hr>
+            <br>
+            
+            <h3>Introdução</h3>
+            <p>
+                Agora que conseguimos inicializar uma VM, vamos tentar a compilar um kernel customizado
+                e usá-lo na VM. A principal ferramenta aqui é o <code>kw</code> (ou kworkflow). Da mesma
+                forma que no tutorial anterior, alguns problemas surgiram ao longo deste.
+            </p>
+
+            <br>
+
+            <h3>Árvore do Kernel Linux e <code>kw</code></h3>
+            <p>
+                Queremos fazer modificações no kernel linux; logo, precisamos clonar um repositório que
+                contém o código fonte do linux. Para essa série de tutoriais, clonamos o subsistema <span>IIO</span>
+                (<i>Industrial I/O</i>). Especificamente, clonamos a branch <i>testing</i> com um limite
+                do histótico de commits do git, a fim de reduzir o tamanho. Agora, entramos no diretório
+                que contém a árvore e inicializamos e configuramos o <code>kw</code>. Também usamos o <code>kw</code>
+                e o <code>make</code> para configurar a compilação. Por fim, escolhemos um nome para o nosso
+                kernel customizado. Escolhi chamá-lo de "batata".
+            </p>
+
+            <br>
+
+            <h3>Compilando o Kernel</h3>
+            <p>
+                Finalmente, depois de mais algumas configurações, executamos <code>kw build</code>
+                para compilar o kernel. O tempo de compilação foi de aproximadamente 13 minutos e tudo
+                pareceu ocorrer bem. Agora, o tutorial atualiza as funções do <code>activate.sh</code>
+                para que utilizem o kernel que compilamos. Porém, nessa parte, me deparei com um erro
+                bem chato de descobrir. O tutorial pede para utilizar "vda" no nome da partição. Porém,
+                sempre que eu tentava abrir a VM com <code>create_vm_virsh</code>, alguma falha acontecia.
+                Descobri depois de algum tempo testando soluções que, na função <code>create_vm_virsh</code>,
+                precisavamos utilizar "sda" no lugar de "vda". Com essa alteração feita, a VM iniciou.
+                Abrindo a VM e executando <code>uname --kernel-release</code>, temos como resultado:
+                <code>7.0.0-rc7-batata+</code>
+            </p>
+
+            <br>
+
+            <h3></h3>
+            <p>
+                
+            </p>
+
+        </div>
+
+    </div>
+
+    
+</body>
+</html>

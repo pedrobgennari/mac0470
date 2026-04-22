@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedro Barletta Gennari - 0</title>
+
+    <link href="../../css/styles.css" rel="stylesheet">
+</head>
+<body>
+
+    <div class="page">
+        <div id="cicle0" class="cicle">
+        
+            <small>0 &middot; //2026</small>
+            <h6>Desenvolvimento do Kernel Linux</h6>
+            
+            <br>
+            <h2>> Módulos do Kernel Linux <a href="https://flusp.ime.usp.br/kernel/modules-intro/" target="_blank">&#128279;</a></h2>
+            
+            <br>
+            <hr>
+            <br>
+            
+            <h3>Introdução</h3>
+            <p>
+                Não queremos, para cada mudança pequena que fizermos, ter que recompilar/reiniciar
+                todo o kernel novamente. Módulos são pedaços de código que podem ser adicionados e
+                removidos conforme necessário. Esse tutorial apresenta módulos e como mexer com eles.
+            </p>
+
+            <br>
+
+            <h3>Simple Mod</h3>
+            <p>
+                Começamos indo até a pasta <code>drivers/misc/</code> da árvore do kernel.
+                criamos o arquivo <code>simple_mod.c</code> e adicionamos suas configurações
+                nos arquivos <code>Kconfig</code> e <code>Makefile</code>. Por fim, para ativar
+                o nosso módulo de teste (isto é, para que ele seja compilado), usamos o comando
+                <code>make -C menuconfig</code> e alteramos a opção de <code>simple_mod.c</code>
+                para <i>m</i>. Depois de compilar o kernel, o tutorial indica que devemos instalar
+                o módulo usando uma sequência de comandos. Porém, o comando <code>sudo guestmount</code>
+                sempre retornava com erro. Fiquei preso neste erro até o final da aula. Quando
+                cheguei em casa, pesquisei e não consegui encontrar nada sobre. Decidi esperar
+                a próxima aula e perguntar ao monitor. Na semana seguinte, alguns minutos antes
+                da aula, rodei o comando novamente e, magicamente, funcionou. Não sei o que fez
+                dar certo agora, mas também não vou reclamar. Subindo a VM, carregando o módulo
+                e executando <code>modinfo simple_mod</code>, vemos que o módulo aparece.
+            </p>
+
+            <br>
+
+            <h3>Simple Mod Part</h3>
+            <p>
+                Depois de criar o simple_mod, o tutorial cria <code>simple_mod_part.c</code>,
+                módulo que usa uma das funções que adicionamos em simple_mod. O processo é]
+                praticamente o mesmo, com a única diferença sendo que, durante a configuração,
+                colocamos que simple_mod_part depende de simple_mod. Repetindo o processo,
+                criamos o segundo módulo com sucesso.
+            </p>
+
+        </div>
+
+    </div>
+
+    
+</body>
+</html>

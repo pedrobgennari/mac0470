@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedro Barletta Gennari - 01</title>
+
+    <link href="../../css/styles.css" rel="stylesheet">
+</head>
+<body>
+
+    <div class="page">
+        <div class="cicle">
+        
+            <small>01 &middot; 25/02/2026</small>
+            <h6>Desenvolvimento do Kernel Linux</h6>
+            
+            <br>
+            <h2>> Criando um Ambiente de Testes <a href="https://flusp.ime.usp.br/kernel/qemu-libvirt-setup/" target="_blank">&#128279;</a></h2>
+    
+            <!--<h2> Setting up a test environment for Linux Kernel Dev using QEMU and libvirt</h2>
+            <ul>
+                <li><span>Objetivo:</span> preparar um ambiente de testes para o desenvolvimento do Kernel do Linux</li>
+                <li><span>Referência:</span> <a href="https://flusp.ime.usp.br/kernel/qemu-libvirt-setup/" target="_blank">Tutorial do Flusp</a></li>
+            </ul>-->
+            
+            <br>
+            <hr>
+            <br>
+            
+            <h3>Introdução</h3>
+            <p>
+                Para qualquer software que queremos desenvolver, é uma boa ideia configurar um
+                ambiente que nos permita testar nossas modificações de forma segura e eficiente.
+                O desenvolvimento do Kernel Linux não é diferente; na verdade, devido à sua complexidade, 
+                é ainda mais importante o uso de um ambiente de desenvolvimento isolado. Assim, começaremos
+                o ciclo de desenvolvimento do kernel linux configurando uma <span>máquina virtual</span> (VM).
+                Esse tutorial acabou gerando algumas dificuladades. Além de eu não ter muita experiência
+                com Linux, mexer com o Kernel envolve diversos conceitos não muito triviais.
+            </p>
+
+            <br>
+
+            <h3>Preparação</h3>
+            <p>
+                Após instalar as depedências, criamos o diretório principal do nosso projeto, chamado
+                <span>lk_dev</span>. Nele, criamos o script <code>activate.sh</code>. Aqui já apareceu
+                o primeiro problema: como foi preciso alterar as permissões do diretório principal, é
+                necessário sair e entrar da sua conta para que as permissões atualizem corretamente
+                (o que, até então, eu não sabia). Eventualmente (depois de mais tempo do que eu gostaria
+                de adimitir), consegui criar o script. Neste tutorial, utilzamos as ferramentas
+                <code>QEMU</code> e <code>libvirt</code> para rodar e a VM. Com a primeira delas,
+                criamos a função <code>launch_vm_qemu</code> que inicializa uma máquina virtual.
+            </p>
+
+            <br>
+
+            <h3>Inicializando a VM</h3>
+            <p>
+                Agora, instalamos a <span>imagem de disco</span> do que usaremos com a VM. Estamos
+                interessados no <span>kernel</span> e no <span>initrd</span> da imagem. Executando
+                <code>launch_vm_qemu</code> com o caminho apropriado do kernel e do initrd, a nossa
+                primeira máquina virtual é criada. Agora, o tutorial ensina a user o <code>libvirt</code>.
+                Aqui, outra dificuldade fica clara: são muitos comandos e conceitos que temos que aprender
+                de uma vez, o que acaba tornando o tutorial bastante sobrecarregado. Criamos uma função
+                <code>create_vm_virsh</code> em nosso script, para que possamos subir a VM rápidamente. 
+            </p>
+
+        </div>
+
+    </div>
+
+    
+</body>
+</html>

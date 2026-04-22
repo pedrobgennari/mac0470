@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedro Barletta Gennari - 06</title>
+
+    <link href="../../css/styles.css" rel="stylesheet">
+</head>
+<body>
+
+    <div class="page">
+        <div class="cicle">
+        
+            <small>06 &middot; 01/04/2026</small>
+            <h6>Desenvolvimento do Kernel Linux</h6>
+            
+            <br>
+            <h2>> Enviando Patches com email USP <a href="https://flusp.ime.usp.br/git/sending-patches-with-git-and-a-usp-email/" target="_blank">&#128279;</a></h2>
+            
+            <br>
+            <hr>
+            <br>
+            
+            <h3>Introdução</h3>
+            <p>
+                Contribuições para o Kernel Linux são feitas via email. Algumas ferramentas, como
+                o <code>git send-email</code> ou o próprio <code>kw</code>, podem ser utilizadas
+                para facilitar o processo. Porém, como queremos fazer as contribuições com nossos
+                emails USP, precisamos fazer algumas configurações adicionais.
+            </p>
+
+            <br>
+            
+            <h3>OAuth 2.0</h3>
+            <p>
+                O tutorial apresenta duas opções para utilizar o protocolo OAuth: <code>git credential</code>
+                helper, ou <span>Email Proxy</span>. Até o momento, porém, o tutorial apenas explica a segunda
+                opção, então optei por ela. Para continuar com essa opção, era necessário instalar
+                e configurar <code>docker</code> e <code>docker-compose</code>. Essa foi a parte mais
+                difícil desse tutorial; não porque foi complicada, mas porque o tutorial em si pulou
+                essa parte. Tendo ambos instalados, não houve nenhum problema com o restante do tutorial
+                e, em alguns minutos, consegui enviar um email com <code>kw send-patch</code>.
+            </p>
+
+        </div>
+
+    </div>
+
+    
+</body>
+</html>
