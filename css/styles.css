@@ -4,8 +4,7 @@
     navigation: auto;
 }
 
-@media(prefers-color-scheme: dark){
-    :root{
+:root{
     --text-color: #e2eff8;
     --text-color2: #a8c4ec;
     --background-color: #081521;
@@ -16,7 +15,6 @@
     --secondary-color2: #06457f;
     --accent-color: #d1a74d;
     --accent-color2: #f9b17a;/*#2c444c;*/
-    }
 }
 
 *{
