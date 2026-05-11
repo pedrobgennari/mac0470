@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedro Barletta Gennari - 10</title>
+
+    <link href="../../css/styles.css" rel="stylesheet">
+</head>
+<body>
+
+    <div class="page">
+        <div class="cicle">
+        
+            <small>10 &middot; 29/04/2026</small>
+            <h6>Desenvolvimento do Kernel Linux</h6>
+            
+            <br>
+            <h2>> Patch v3</h2>
+            
+            <br>
+            <hr>
+            <br>
+            
+            <h3>Corrigindo a v2</h3>
+            <p>
+                Eu recebi a seguinte resposta da segunda versão do patch<a href="https://lore.kernel.org/all/20260421105834.0d6ebd98@jic23-huawei/" target="_blank">&#128279;</a>.
+                Dessa vez, quem respondeu foi o Jonathan Cameron. Novamente, as mudanças a serem feitas são simples:
+                retirar chaves { e } (que agora são desnecessárias); retirar uma inicialização de variável (também
+                desnecessária); e inverter comparações "if (!ret)" para "if (ret)". Essa última mudança, por não se relacionar muito
+                com o patch original (que era sobre <i>mutex</i>) foi feita em um novo <i>commit</i>. Assim, foi enviada a seguinte
+                série de patches como terceira versão:<a href="https://lore.kernel.org/all/20260429013640.26870-1-pedro.pbg@usp.br/" target="_blank">&#128279;</a>
+            </p>
+        </div>
+    </div>
+</body>
+</html>
