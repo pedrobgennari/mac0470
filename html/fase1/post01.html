@@ -35,7 +35,7 @@
                 O desenvolvimento do Kernel Linux não é diferente; na verdade, devido à sua complexidade, 
                 é ainda mais importante o uso de um ambiente de desenvolvimento isolado. Assim, começaremos
                 o ciclo de desenvolvimento do kernel linux configurando uma <span>máquina virtual</span> (VM).
-                Esse tutorial acabou gerando algumas dificuladades. Além de eu não ter muita experiência
+                Esse tutorial acabou gerando algumas dificuldades. Além de eu não ter muita experiência
                 com Linux, mexer com o Kernel envolve diversos conceitos não muito triviais.
             </p>
 
@@ -48,7 +48,7 @@
                 o primeiro problema: como foi preciso alterar as permissões do diretório principal, é
                 necessário sair e entrar da sua conta para que as permissões atualizem corretamente
                 (o que, até então, eu não sabia). Eventualmente (depois de mais tempo do que eu gostaria
-                de adimitir), consegui criar o script. Neste tutorial, utilzamos as ferramentas
+                de adimitir), consegui criar o script. Neste tutorial, utilizamos as ferramentas
                 <code>QEMU</code> e <code>libvirt</code> para rodar e a VM. Com a primeira delas,
                 criamos a função <code>launch_vm_qemu</code> que inicializa uma máquina virtual.
             </p>
@@ -60,7 +60,7 @@
                 Agora, instalamos a <span>imagem de disco</span> do que usaremos com a VM. Estamos
                 interessados no <span>kernel</span> e no <span>initrd</span> da imagem. Executando
                 <code>launch_vm_qemu</code> com o caminho apropriado do kernel e do initrd, a nossa
-                primeira máquina virtual é criada. Agora, o tutorial ensina a user o <code>libvirt</code>.
+                primeira máquina virtual é criada. Agora, o tutorial ensina a usar o <code>libvirt</code>.
                 Aqui, outra dificuldade fica clara: são muitos comandos e conceitos que temos que aprender
                 de uma vez, o que acaba tornando o tutorial bastante sobrecarregado. Criamos uma função
                 <code>create_vm_virsh</code> em nosso script, para que possamos subir a VM rápidamente. 
