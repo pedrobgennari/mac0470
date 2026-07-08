@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedro Barletta Gennari - 00</title>
+
+    <link href="../../css/styles.css" rel="stylesheet">
+</head>
+<body>
+
+    <div class="page">
+        <div class="cicle">
+        
+            <small>01 &middot; 01/07/2026</small>
+            <h6>Ecossistema do Kernel Linux</h6>
+            
+            <br>
+            <h2>> A Contribuição</h2>
+            
+            <br>
+            <hr>
+            <br>
+            
+            <h3>O Problema</h3>
+            <p> 
+                Das issues mencionadas anteriormente, a que eu acabei escolhendo foi como primeira
+                contribuição foi a #1588. Apesar de ter iniciado com a #1574, decidi na aula de quarta que
+                resolvê-la seria um pouco mais chato do que eu pensava inicialmente. Ainda assim, a ideia de aprender
+                fazendo ela deu muito certo (especialmente com relação à arquitetura do calendário), facilitando a #1588.
+                O problema proposto por essa issue é o seguinte: ao criar um novo evento ou editar um existente, o
+                <i>pop-up</i> que aparece possui uma secção de "escolher calendário", para decidir em qual calendário
+                o evento pertence. No entanto, se há apenas um calendário (por exemplo, o padrão), não há necessidade de
+                mostrar esse widget (já que não há escolha). Assim, o objetivo aqui é removê-lo nesses casos.
+            </p>
+
+            <br>
+            
+            <h3>Event Editor</h3>
+            <p> 
+                Esse é o primeiro pop-up afetado pelo problema, definido no arquivo <code>gcal-event-editor-dialog.c</code>.
+                
+                <br>
+                <img src="../../assets/event-editor-new-0.png" alt="Event Editor original"/>
+                <br>
+
+                Depois de alguns dias entendento esse arquivo (e todo o calendário), descobri que a função
+                <code>gcal_event_editor_dialog_present_event (...)</code> é chamada toda vez o Event Editor é aberto.
+                Dentro dela há uma chamada para outra função, <code>set_event (...)</code>. Essa segunda função dentre
+                outras coisas, esconde alguns dos widgets com base em algumas condições. Ora, parece o local perfeito para
+                a nossa mudança. Com base no restante do arquivo, concluí que a melhor forma de fazer isso seria:
+                <ol>
+                    <li>
+                        Definir uma variável <code>GListModel *all_calendars</code> e atribuir a ela a lista de calendários
+                        do pop-up;
+                    </li>
+                    <li>
+                        Definir uma variável <code>g_boolean has_multiple_calendars</code> e atribuir a ela o valor
+                        "tamanho de all_calendars > 1";
+                    </li>
+                    <li>
+                        Usar <code>gtk_widget_set_visible</code> para enconder a lista caso necessário (isto é, quando
+                        há apenas um calendário de escrita).
+                    </li>
+                </ol>
+                O resultado foi:
+
+                <br>
+                <img src="../../assets/event-editor-new-1.png" alt="Event Editor com linha"/>
+                <br>
+                
+                Porém, é possivel perceber uma linha no lugar onde antes estava o widget. Pesquisando, descobri que provavelmente
+                se tratava do widget pai da lista de calendários. Aqui, foi necessário aprender um pouco sobre os arquivos .blp, que
+                usam uma linguagem própria para definir interfaces com o GTK4. No arquivo <code>gcal-event-editor-dialog.blp</code>,
+                podemos dar um nome ao widget pai da lista. Isso nos permite acessá-lo pelo código. Agora, econdendo ele ao invés do filho, temos:
+                
+                <br>
+                <img src="../../assets/event-editor-new-2.png" alt="Event Editor final"/>
+            </p>
+
+            <br>
+            
+            <h3>Quick Add</h3>
+            <p> 
+                O segundo pop-up é o Quick Add (<code>gcal-quick-add-popover.c</code>), compartilhando do mesmo problema. Veja:
+                
+                <br>
+                <img src="../../assets/quick-add-0.png" alt="Quick Add original" />
+                <br>
+                
+                Aqui, porém, não há uma função chamada sempre que o pop-up abre como antes. Logo, precisamos achar uma forma de conectar
+                as mudanças na lista com uma função. Fazemos isso com um sinal. Basta usar <code>g_signal_connect_object (...)</code>
+                para conectar a lista de calendários a um <i>callback</i>. Em específico, usamos o sinal "items-changed", que chama a
+                função sempre que a lista mudar. Encondendo a lista, vamos encontrar um problema muito similar ao anterior:
+                
+                <br>
+                <img src="../../assets/quick-add-1.png" alt="Quick Add com espaço" />
+                <br>
+                
+                Ao invés de uma linha preta, temos um grande espaço em branco. O truque aqui é exatamente o mesmo: esconder o pai.
+                
+                <br>
+                <img src="../../assets/quick-add-2.png" alt="Quick Add final" />
+            </p>
+        </div>
+
+    </div>
+
+    
+</body>
+</html>

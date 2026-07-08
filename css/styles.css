@@ -151,6 +151,12 @@ code {
     color: var(--primary-color);
 }
 
+img {
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+}
+
 /* Button */
 
 /*small{
